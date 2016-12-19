@@ -37,8 +37,11 @@ text4.generate()
 len(text3)
 #It will give count of uniques set of words in a  sorted order
 len(sorted(set(text3)))
-
+#It gives the average number of times a word is repeated
 len(text3)/len(set(text3))
+
+
+
 
 text4.count("a")
 len(text4)
@@ -47,20 +50,48 @@ ans
 
 sent1
 
-saying  = ['After','all','is','said','and','done','more','is','said','than','done']
+saying  = ['After','all','is','said','and','done','more','is','said','than','done','done']
 tokens = set(saying)
-tokens = sorted(saying)
-tokens[-2:]
+tokens = sorted(tokens)
+tokens[:2]
 
 
-v=set(text1)
-long_word = []
-long_words = [w for w in v if len(w) > 15]
-w
-long_words
-for w in v:
-    if len(w) > 15:
-        long_word.append(w)
+#To find the most frequent words
+
+fdist1 = FreqDist(text1)
+fdist1
+VOCUBULARY = fdist1.keys()
+VOCUBULARY[1:50]
+#frequency distribution for a particular word
+fdist1['whale']
+
+fdist1.plot(50,cumulative = False)
+fdist1.plot(50,cumulative = True)
+
+#shos the list of words that occurs only once
+fdist1.hapaxes()
+
+#the below function will find the words that are having more then the number of mentioned characters
+def findlongWord(text,howLong):
+    v=set(text)
+    long_words = [w for w in v if len(w) > howLong]
+    sorted(long_words)
+    print long_words
+    
+findlongWord(text1,19)    
+
+##Find the collocation in teh sentence text4.
+text4.collocations()
+
+#To count the frequency distribution of words having different word length.
+fdist = FreqDist([len(w) for w in text1])
+
+fdist
+fdist.keys()  #return the key
+fdist.items() #return each element with their count
+fdist.max() #find the element which is having maximum number of counts
+fdist.freq(3)
+
 
 
 h = ['Monty','Python']*2
